@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 指定DOM
+        let body = document.querySelector('body');
+        body.innerHTML = `<div id="app"></div>`
+        let board = document.querySelector('#app');
+        
+        // 設定讓區塊置中
+        body.style.height = "100vh"
+        body.style.display = "flex";
+        body.style.alignItems = "center";
+        
+        // 設定外框
+        board.style.width = "600px";
+        board.style.height = "600px";
+        board.style.border = "1px solid black"
+        board.style.margin = "auto";
+        board.style.display = "grid";
+        board.style.gridTemplateColumns = "repeat(3 , 200px)";
+        
+        // 填入99乘法表與棋盤樣式
+        for(let i = 1; i <= 9; i++){
+            board.innerHTML += `<div class="number${i} number"></div>`;
+            let number = document.querySelector(`.number${i}`);
+            number.style.height = "200px";
+            number.style.width = "200px";
+            number.style.display = "grid";
+            number.style.justifyItems = "center";
+            number.style.alignContent = "center";
+            if(i % 2 == 0){
+                number.style.backgroundColor = "black";
+                number.style.color = "white";
+            }
+            for(let j = 1; j <= 9; j++){
+                number.innerHTML += `<span>${i} x ${j} = ${i * j}</span>`
+            }
+        }
+    </script>
+</body>
+</html>
